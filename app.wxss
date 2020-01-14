@@ -1,0 +1,84 @@
+/**app.wxss**/
+
+/* 容器部分 */
+
+page {
+  background-color: #f0f0f0;
+  height: 100%;
+  font-size: 32rpx;
+  font-family: "Hiragino Sans GB",
+                 "Helvetica Neue",
+                 Helvetica,
+                 "Microsoft Yahei",
+                 heiti,
+                 Arial,
+                 sans-serif;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+/* image {
+  vertical-align: middle;
+} */
+
+.hide {
+  display: none;
+}
+
+.loading-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20rpx 0;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.loading {
+  width: 40rpx;
+  height: 40rpx;
+  border: 2px #ccc solid;
+  border-left: 2px red solid;
+  border-radius: 50%;
+  -webkit-animation: loading 0.7s linear infinite;
+  animation: loading 0.7s linear infinite;
+}
+
+@-webkit-keyframes loading {
+  from {
+    -webkit-transform: rotate(0);
+  }
+
+  to {
+    -webkit-transform: rotate(359deg);
+  }
+}
+
+@keyframes loading {
+  from {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+
+  to {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}

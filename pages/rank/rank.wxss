@@ -1,0 +1,193 @@
+/* pages/rank/rank.wxss */
+
+.container {
+  background-color: #f9eac1;
+  align-items: center;
+}
+
+.title {
+  width: 321rpx;
+  height: 114rpx;
+  margin-top: 25rpx;
+}
+
+.center {
+  /* 随便设置高度 */
+  height: 100rpx;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  width: 690rpx;
+  background-color: #ffd7a7;
+  margin-top: 22rpx;
+  border-radius: 10rpx;
+  /* scroll-view必须设置高度，为了填满使用再套一层 */
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rank_mine {
+  margin-top: 39rpx;
+  line-height: 1;
+  text-align: center;
+}
+
+.rank_mine_desc {
+  font-size: 36rpx;
+  color: #734b1a;
+  font-weight: 600;
+}
+
+.rank_mine_num {
+  font-size: 50rpx;
+  color: #e34536;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  font-weight: 600;
+}
+
+.rank_all {
+  margin-top: 11rpx;
+  margin-bottom: 11rpx;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.items {
+  width: 633rpx;
+  margin-top: 21rpx;
+  height: 151rpx;
+}
+
+.items_back {
+  width: 633rpx;
+  height: 151rpx;
+  z-index: 0;
+  position: absolute;
+}
+
+.items_content{
+  width: 633rpx;
+  height: 151rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  z-index: 10;
+}
+.items_num {
+  width: 108rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.items_num image {
+  width: 55rpx;
+  height: 82rpx;
+}
+
+.items_num text {
+  line-height: 1;
+  color: #d5a871;
+  font-size: 55rpx;
+}
+
+.items_portrait {
+  width: 90rpx;
+  height: 90rpx;
+  border: 5rpx solid #d5a871;
+  border-radius: 20rpx;
+}
+
+
+.info_sub1 {
+  margin-left: 27rpx;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.info_name {
+  color: #d5a871;
+  font-size: 30rpx;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  /* -webkit-box-pack: start; */
+  -webkit-line-clamp: 1;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.info_gold {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 15rpx;
+}
+
+.info_gold text {
+  color: #fff;
+  font-size: 30rpx;
+  margin-left: 10rpx;
+  line-height: 1;
+}
+
+.info_gold image {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.info_sub2 {
+  line-height: 1;
+}
+
+.info_level {
+  color: #fff;
+  font-size: 50rpx;
+  margin-right: 10rpx;
+}
+
+.info_level_desc {
+  color: #d5a871;
+  font-size: 30rpx;
+  margin-right: 40rpx;
+}
+
+.bottom{
+  height: 186rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bottom button {
+  width: 266rpx;
+  height: 92rpx;
+  position: relative;
+  background-size: 266rpx 92rpx;
+  /* 背景色跟随父标签 */
+  background-color: inherit;
+}
+
+/* button去掉边框 */
+
+.bottom button::after {
+  border: none;
+}
+
+.bottom image {
+  width: 266rpx;
+  height: 92rpx;
+  position: absolute;
+  left: 0rpx;
+}

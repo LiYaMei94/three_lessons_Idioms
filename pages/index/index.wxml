@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<view class="container">
+  <image class="back" src='../../images/index_back.png'>
+  </image>
+  <view class='selection'>
+    <image class="title" src='../../images/index_title.png'></image>
+    <view class='op1'>
+      <image bindtap='navigateTo' data-stu='game' class="start_game" src='../../images/index_start_game.png' data-content="{{data_content}}"></image>
+      <button wx:if="{{!hasUserInfo}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo_game" hover-class='none'>
+      </button>
+    </view>
+    <view class='op'>
+      <image bindtap='navigateTo' data-stu='my_record' class="my_record" src='../../images/index_my_record.png'></image>
+      <button wx:if="{{!hasUserInfo}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo_record" hover-class='none'>
+      </button>
+    </view>
+    <!-- <view class='op'>
+      <image bindtap='navigateTo' data-stu='rank' class="rank" src='../../images/index_rank.png'></image>
+      <button wx:if="{{!hasUserInfo}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" hover-class='none'>
+      </button>
+    </view> -->
+  </view>
+  <!-- <view class='bottom'>
+  <text>广告位</text>
+  </view> -->
+</view>

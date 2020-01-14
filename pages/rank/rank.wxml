@@ -1,0 +1,50 @@
+<!--pages/rank/rank.wxml-->
+<view class='container' scroll-y="false">
+  <view class='top'>
+    <image class='title' src='../../images/rank_r.png'></image>
+  </view>
+  <view class='center'>
+    <scroll-view class='content' scroll-y="true">
+      <view class='rank_mine'>
+        <text class='rank_mine_desc'>您的排名:</text>
+        <text class='rank_mine_num'>{{current_rank}}</text>
+        <text class='rank_mine_desc'>名</text>
+      </view>
+      <view class='rank_all'>
+        <view class='items' wx:for="{{list}}" wx:key="items">
+          <image class='items_back' src='../../images/rank_item_back.png'></image>
+          <view class="items_content">
+            <view class='items_num'>
+              <image wx:if="{{index==0}}" src="../../images/rank_1.png"></image>
+              <image wx:if="{{index==1}}" src="../../images/rank_2.png"></image>
+              <image wx:if="{{index==2}}" src="../../images/rank_3.png"></image>
+              <text wx:if="{{index>=3}}">{{index+1}}</text>
+            </view>
+            <image class='items_portrait' src='{{item.portrait}}'></image>
+
+            <view class='info_sub1'>
+              <text class='info_name'>{{item.name}}</text>
+              <view class='info_gold'>
+                <image src='../../images/rank_gold_coin.png'></image>
+                <text>{{item.gold}}</text>
+              </view>
+            </view>
+            
+            <view class='info sub2'>
+              <text class='info_level'>{{item.level}}</text>
+              <text class='info_level_desc'>题</text>
+            </view>
+
+          </view>
+
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- </view> -->
+  <view class='bottom'>
+    <button open-type="share">
+      <image src='../../images/rank_share.png'></image>
+    </button>
+  </view>
+</view>

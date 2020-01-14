@@ -1,0 +1,7 @@
+<template name="loading">
+  <view class="loading-container">
+    <view class="loading" wx:if="{{!done}}"></view>
+    <text  wx:if="{{done}}">{{text}}</text>
+  </view>
+</template>
+<!-- class值为hide 在app.wxss里面设置，display为none-->

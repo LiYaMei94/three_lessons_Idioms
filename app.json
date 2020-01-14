@@ -1,0 +1,16 @@
+{
+  "pages": [
+    
+    "pages/index/index",
+    "pages/game/game",
+    "pages/my_record/my_record",
+    "pages/rank/rank",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#222222",
+    "navigationBarTitleText": "成语三节课",
+    "navigationBarTextStyle": "white"
+  }
+}

@@ -1,0 +1,136 @@
+<!--pages/game/game.wxml-->
+<view class='container'>
+  <!-- 加载的遮罩 -->
+  <view wx:if="{{!load}}" class='loading-placeholder'>
+
+  </view>
+  <!-- 内容区域 -->
+  <view wx:if="{{load}}" class='content'>
+    <!-- 顶部区域 -->
+    <!-- 第几关 -->
+    <text class='level'>第 {{wordData.cnt}} 题</text>
+    <view class='top'>
+      <view class='top_sub1'>
+        <text wx:if="{{wordData.pre!=''}}">上一题：</text>
+        <text class='top_sub1_before'>{{wordData.pre!=''?wordData.pre:"千里之行，始于足下"}}</text>
+      </view>
+      <view class='top_sub2-box'>
+        <view class='top_sub2'>
+          <text>金币：</text>
+          <text class='gold_coin_num'>{{coin}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class='center_sub1'>
+      <image class='hint' bindtap="hint" data-statu="open" src='../../images/g_hint.png'></image>
+      <button open-type='share' data-buttonType='2' data-sharetitle='这道题有点难，快来帮忙看看吧~'>
+        <image class='help' src='../../images/g_help.png'></image>
+      </button>
+    </view>
+    <view class='center_sub2'>
+      <view class='center_sub2_item' wx:for="{{curr}}" bindtap='delete' data-statu="{{index}}" wx:key="index">
+        <text>{{item}}</text>
+      </view>
+    </view>
+
+    <view class='bottom'>
+    <!--hintSuccess为true 只有提示成功才会换掉这块，其他时候是换数据 -->
+      <view class='bottom_item' wx:if="{{!hintSuccess}}">
+        <view class='bottom_item_content' wx:for="{{select}}" bindtap='clickItem' data-statu="{{item}}" wx:key="index">
+          <view class='bottom_item_content_block'>
+            <image src='../../images/g_item_back.png'></image>
+            <text>{{item}}</text>
+          </view>
+        </view>
+      </view>
+      <!-- <view class='bottom_explain' wx:if="{{hintSuccess}}">
+        <view class='bottom_explain_detail'>
+          <text class='pinyin'>{{wordData.pinyin}}</text>
+          <text>【解释】{{wordData.meaning}}</text>
+        </view>
+        <image src='../../images/g_next.png' bindtap='next'></image>
+      </view> -->
+      <!-- 进度条 -->
+      <view class='bottom_progress' wx:if='{{progressShow}}'>
+        <view class='bottom_progress_title'>已完成{{progressPercent}}题，还剩{{5-progressPercent}}题，加油哦！！</view>
+        <progress percent='{{progressPercent*20}}' stroke-width='16' activeColor='#86DD1F' active	='true' backgroundColor='#9C5600'></progress>
+      </view>
+    </view>
+
+    <!-- <view class='ad'>
+      <text>广告位啦~</text>
+    </view> -->
+  </view>
+
+
+
+
+  <!--使用animation属性指定需要执行的动画-->
+  <view class="dialog" wx:if="{{showModalStatus&&coinDialog}}">
+      <view class="dialog_screen" bindtap="powerDrawer" data-statu="close" data-dialogStatus='coin'></view>
+      <view class="dialog_container coin_dialog_container" animation="{{animationData}}">
+        <view class='dialog_title'>
+          <text>分享</text>
+          <image class='dialog_close' bindtap="powerDrawer" data-dialogStatus='coin' data-statu="close" src='../../images/g_dialog_close.png'></image>
+        </view>
+        <view class='dialog_content'>
+          <text class='dialog_content_sub1'>很遗憾！金币不足</text>
+          <text class='dialog_content_sub2'>分享此游戏可免费获得金币</text>
+
+          <button open-type='share' data-buttonType='1'>
+            <image class="dialog_content_share" src='../../images/g_dialog_share.png'></image>
+          </button>
+        </view>
+      </view>
+  </view>
+<!-- 恭喜过关 -->
+  <view class="dialog" wx:if="{{showModalStatus&&answerRight}}">
+      <view class="dialog_screen" bindtap="powerDrawer" data-statu="open" data-dialogStatus='pass'></view>
+      <view class='bgrotating'>
+        <image src='../../images/beijing.png'></image>
+      </view>
+      <view class="dialog_container " animation="{{animationData}}">
+        <view class='dialog_title pass_dialog_title'>
+            <text>恭喜过关</text>
+            <image class='dialog_close' bindtap="powerDrawer" data-statu="close" data-dialogStatus='pass' src='../../images/g_dialog_close.png'></image>
+          </view>
+          <view class='success_dialog_content'>
+            <view class='pronunciation'>
+              <view class='pronunciation_title'>【读音】</view>
+              <view class='pronunciation_text'>{{nextWordData.pinyin}}</view>
+            </view>
+            <view class='pronunciation'>
+              <view class='pronunciation_title'> 【解释】</view>
+              <view class='pronunciation_text'>{{nextWordData.meaning}}</view>
+            </view>
+            <view class='dialog_button'>
+              <view class='button' bindtap='next'>下一题</view>
+              <button class='button' open-type='share' data-buttonType='3' data-sharetitle='我已经答对{{nextWordData.cnt}}题，你敢来挑战吗？'>炫耀</button>
+            </view>
+          </view>
+      </view>
+    </view>
+  <!-- 五关一次提示 -->
+    <view class="dialog" wx:if="{{showModalStatus&&fastMemoryShow}}">
+      <view class="dialog_screen" bindtap="powerDrawer" data-statu="open"></view>
+      <view class="dialog_container coin_dialog_container" animation="{{animationData}}">
+        <view class='dialog_title'>
+          <text>快速记忆</text>
+        </view>
+        <view class='dialog_content'>
+          <block wx:for='{{memoryArr}}' wx:key='index'>
+            <view class='dialog_content_item'>
+              <!-- <text>{{currentIndex+index}}</text>
+              <text>——</text> -->
+              <text>{{item.c_chengyu}}</text>
+            </view>
+          </block>
+          <view class='countTime'>倒计时：{{countTime}}</view>
+        </view>
+      </view>
+    </view>
+    
+    
+
+</view>

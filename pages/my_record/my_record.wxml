@@ -1,0 +1,54 @@
+<scroll-view class='scroll' scroll-y="true" lower-threshold="300" bindscrolltolower="scrolltolower" style="height:100%;">
+  <view wx:if="{{!load}}" class='loading-placeholder'></view>
+  <view wx:if="{{load}}" class="container">
+    <text class='title'>我的成就</text>
+    <view class='grids'>
+      <view class='item' wx:for="{{grids}}" wx:key="{{index}}" data-chengyuIndex='{{index}}' bindtap='powerDrawer' data-statu="open" data-item='{{item}}'>
+        <view class='item_content'>
+          <view class='text_group'>
+            <text class='num'>{{index+1}}</text>
+            <text class='name'>{{item.chengyu}}</text>
+          </view>
+          <image wx-if="{{item!=='????'}}" class='back' src='../../images/mr_reach.png'></image>
+          <image wx-if="{{item!=='????'}}" class='finished' src='../../images/mr_finished.png'></image>
+          <image wx-if="{{item==='????'}}"  class='back' src='../../images/mr_unreach.png'></image>
+        </view>
+      </view>
+    </view>
+    <!-- 点击弹出解释框 -->
+    
+    
+    
+    <view class="dialog" wx:if='{{showModalStatus}}'>
+      <view class="dialog_screen" bindtap="powerDrawer" data-statu="close"></view>
+      <view class="dialog_container" animation="{{animationData}}">
+        <view class='dialog_title'>
+          <text>{{gridItem.chengyu}}</text>
+          <image class='dialog_close' bindtap="powerDrawer" data-statu="close" src='../../images/g_dialog_close.png'></image>
+        </view>
+        <view class='success_dialog_content'>
+          <view class='pronunciation'>
+            <view class='pronunciation_title'>【读音】</view>
+            <view class='pronunciation_text'>{{gridItem.pinyin}}</view>
+          </view>
+          <view class='pronunciation'>
+            <view class='pronunciation_title'> 【解释】</view>
+            <view class='pronunciation_text'>{{gridItem.jieshi}}</view>
+          </view>
+          
+
+        </view>
+      </view>
+    </view>
+    <view class='dialog-simple' wx:if="{{showModal}}">
+      <view class='dialog-simple-back' data-type='{{false}}' catchtouchstart='onClickDeleteOp' ></view>
+      <view class='dialog-simple-container dialog-comment-simple-container'>
+        <text class='dialog-simple-content dialog-comment-simple-content' >{{content}}</text>
+        <view class='dialog-simple-select dialog-comment-simple-select' >
+          <view class='dialog-simple-op dialog-comment-simple-op {{dialogBtnActive==0?"themeColorsFont":""}}' bindtap='onClickDeleteOp'  data-type='{{false}}'>{{negativeText?negativeText:'取消'}}</view>
+          <view class='dialog-simple-op dialog-comment-simple-op  {{dialogBtnActive==1?"themeColorsFont":""}}' bindtap='onClickDeleteOp' data-type='{{true}}'>{{positiveText?positiveText:'确定'}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
